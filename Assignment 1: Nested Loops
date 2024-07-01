@@ -1,0 +1,90 @@
+Part 1: Determining Perfect Numbers
+
+/**
+ * This program determines and prints all perfect numbers between 1 and 200.
+ * A perfect number is a positive integer that is equal to the sum of its proper divisors, excluding the number itself.
+ * For example, 6 is a perfect number because its divisors (excluding itself) are 1, 2, and 3, and 1 + 2 + 3 = 6.
+ * The program uses nested loops to iterate through the numbers from 1 to 200 and check for perfect numbers.
+ */
+public class Main {
+    public static void main(String[] args) {
+        // Loop through numbers from 1 to 200 to find perfect numbers
+        for (int number = 1; number <= 200; number++) {
+            int sumOfDivisors = 0;
+
+            // Find all divisors of the current number (excluding itself)
+            for (int i = 1; i < number; i++) {
+                if (number % i == 0) {
+                    sumOfDivisors += i;
+                }
+            }
+
+            // Check if the sum of divisors is equal to the current number
+            if (sumOfDivisors == number) {
+                System.out.println(number + " is a perfect number.");
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+Part 2: Allow User to Choose
+
+import java.util.Scanner;
+
+/**
+ * This program determines and prints all perfect numbers up to a user-specified limit.
+ * A perfect number is a positive integer that is equal to the sum of its proper divisors, excluding the number itself.
+ * For example, 6 is a perfect number because its divisors (excluding itself) are 1, 2, and 3, and 1 + 2 + 3 = 6.
+ * The program uses nested loops to iterate through the numbers up to the specified limit and check for perfect numbers.
+ */
+public class Main {
+    public static void main(String[] args) {
+        long upperLimit = getUserInput();
+        findPerfectNumbers(upperLimit);
+    }
+
+    /**
+     * This method takes user input for the upper limit of the search for perfect numbers.
+     *
+     * @return the upper limit as a long
+     */
+    public static long getUserInput() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the upper limit to search for perfect numbers: ");
+        while (!scanner.hasNextLong()) {
+            System.out.print("Please enter a valid number: ");
+            scanner.next();
+        }
+        return scanner.nextLong();
+    }
+
+    /**
+     * This method finds and prints all perfect numbers up to the specified limit.
+     *
+     * @param upperLimit the upper limit for searching perfect numbers
+     */
+    public static void findPerfectNumbers(long upperLimit) {
+        // Loop through numbers from 1 to upperLimit to find perfect numbers
+        for (long number = 1; number <= upperLimit; number++) {
+            long sumOfDivisors = 0;
+
+            // Find all divisors of the current number (excluding itself)
+            for (long i = 1; i < number; i++) {
+                if (number % i == 0) {
+                    sumOfDivisors += i;
+                }
+            }
+
+            // Check if the sum of divisors is equal to the current number
+            if (sumOfDivisors == number) {
+                System.out.println(number + " is a perfect number.");
+            }
+        }
+    }
+}
